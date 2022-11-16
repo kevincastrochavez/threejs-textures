@@ -4,15 +4,19 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js';
 
 // TEXTURES
 
-const image = new Image();
-const texture = new THREE.Texture(image);
-
-image.addEventListener('load', () => {
-  // To update the texture
-  texture.needsUpdate = true;
-});
-
-image.src = '/textures/door/color.jpg';
+const textureLoader = new THREE.TextureLoader();
+const texture = textureLoader.load(
+  '/textures/door/color.jpg',
+  () => {
+    console.log('Load');
+  },
+  () => {
+    console.log('Progress');
+  },
+  () => {
+    console.log('Error');
+  }
+);
 
 /**
  * Base
