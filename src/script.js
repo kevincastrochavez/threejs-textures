@@ -19,18 +19,14 @@ loadingManager.onError = () => {
 };
 
 const textureLoader = new THREE.TextureLoader(loadingManager);
-const colorTexture = textureLoader.load('/textures/door/color.jpg');
+const colorTexture = textureLoader.load('/textures/checkerboard-8x8.png');
 
-colorTexture.repeat.x = 2;
-colorTexture.repeat.y = 3;
-colorTexture.wrapS = THREE.RepeatWrapping;
-colorTexture.wrapT = THREE.RepeatWrapping;
-colorTexture.offset.x = 0.5;
-colorTexture.offset.y = 0.5;
+colorTexture.generateMipmaps = false;
 
-colorTexture.rotation = Math.PI / 4;
-colorTexture.center.x = 0.5;
-colorTexture.center.y = 0.5;
+// Useful when looking at the object from far
+// colorTexture.minFilter = THREE.NearestFilter;
+// Useful when looking at the object from close
+colorTexture.magFilter = THREE.NearestFilter;
 
 /**
  * Base
